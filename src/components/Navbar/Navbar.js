@@ -43,7 +43,7 @@ const stripLocale = (pathname, locale) => {
   return pathname.replace(`/${locale}`, "");
 };
 
-function Navbar() {
+function Navbar({ code, name, country_code }) {
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
@@ -51,6 +51,7 @@ function Navbar() {
   const releaseDate = new Date("2021-03-07");
 
   useEffect(() => {
+ 
     console.log("Setting page stuff");
     document.body.dir = currentLanguage.dir || "ltr";
     document.title = t("app_title");
@@ -90,17 +91,24 @@ function Navbar() {
             </MobileIcon>
 
             <NavMenu onClick={handleClick} click={click}>
-              {languages.map(({ code, name, country_code }) => (
-                <NavItem>
-                  <NavLinks
-                    key={country_code}
-                    onClick={() => i18next.changeLanguage(code)}
-                    disabled={currentLanguageCode === code}
-                  >
-                    {name}
-                  </NavLinks>
-                </NavItem>
-              ))}
+              <NavItem>
+                <NavLinks
+                  key={country_code}
+                  onClick={() => i18next.changeLanguage(code)}
+                 
+                  to="/en"
+                >
+                  EN
+                </NavLinks>
+                <NavLinks
+                  key={country_code}
+                  onClick={() => i18next.changeLanguage(code)}
+                
+                  to="/ar"
+                >
+                  AR
+                </NavLinks>
+              </NavItem>
             </NavMenu>
           </NavbarContainer>
         </Nav>
