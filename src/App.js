@@ -3,7 +3,14 @@ import { useTranslation } from "react-i18next";
 import { Dropdown } from "react-bootstrap";
 import i18next from "i18next";
 import cookies from "js-cookie";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GlobalStyle from "./globalStyles";
+import Home from "./pages/HomePage/Home";
+
+
+import ScrollToTop from "./components/ScrollToTop";
+import { Navbar } from "./components";
+
 
 const languages = [
   {
@@ -27,7 +34,7 @@ function App() {
 
   const releaseDate = new Date("2021-03-07");
   const timeDifference = new Date() - releaseDate;
-  const number_of_days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
 
   useEffect(() => {
     console.log("Setting page stuff");
@@ -36,43 +43,48 @@ function App() {
   }, [currentLanguage, t]);
 
   return (
-    <div className="container">
-      <div className="d-flex justify-content-end">
-        <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Dropdown Button
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-            {languages.map(({ code, name, country_code }) => (
-              <Dropdown.Item
-                key={country_code}
-                onClick={() => i18next.changeLanguage(code)}
-                disabled={currentLanguageCode === code}
-              >
-                <span
-                  className={`flag-icon flag-icon-${country_code} mx-2`}
-                  style={{
-                    opacity: currentLanguageCode === code ? 0.5 : 1,
-                  }}
-                ></span>
-
-                {name}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-        {/*    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route path="/list" element={<Listing />} />
-      </Routes>
-    </BrowserRouter> */}
+    <div >
+      <div >
+      
+        <Router>
+          <GlobalStyle />
+          <ScrollToTop />
+          <Navbar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+          
+          </Switch>
+        </Router>
       </div>
-      <div className="d-flex flex-column align-items-start">
-        <h1 className="font-weight-normal mb-3"> {t("welcome_message")}</h1>
-        <p>{t("days_since_release", { number_of_days })}</p>
-      </div>
+     {/** <div className="d-flex flex-column align-items-start">
+        <h1 className="font-weight-normal mb-3"> {t("app_title")}</h1>
+        <p>{t("intro")}</p>
+        <h1 className="font-weight-normal mb-3"> {t("except_title")}</h1>
+        <p>{t("except_paragraph")}</p>
+        <h4> {t("appeal_intro")}</h4>
+        <p>{t("col1")}</p>
+        <p>{t("col2")}</p>
+        <p>{t("col3")}</p>
+        <p>{t("col4")}</p>
+        <h6> {t("appeal_info")}</h6>
+        <h4> {t("decision")}</h4>
+        <h1 className="font-weight-normal mb-3"> {t("wrt1")}</h1>
+        <p> {t("wrt1_info")}</p>
+        <h1 className="font-weight-normal mb-3"> {t("wrt2")}</h1>
+        <p> {t("wrt2")}</p>
+
+        <h4> {t("appeal_decision_title")}</h4>
+        <p> {t("d1")}</p>
+        <p> {t("d2")}</p>
+        <h3> {t("delay_title1")}</h3>
+        <h5> {t("delay_title2")}</h5>
+        <h2>{t("r1")}</h2>
+        <p>{t("r1_detail")}</p>
+        <h2>{t("r2")}</h2>
+        <p>{t("r2_detail")}</p>
+        <h2>{t("r3")}</h2>
+        <p>{t("r3_detail")}</p>
+      </div>*/} 
     </div>
   );
 }

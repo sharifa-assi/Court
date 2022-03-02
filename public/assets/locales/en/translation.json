@@ -1,6 +1,33 @@
 {
-  "app_title": "Title",
+  "app_title": "Criminal Court of Appeal",
   "language": "Language",
-  "welcome_message": "Welcome",
-  "days_since_release": "it's been {{number_of_days}} days since this video was released"
+
+  "intro": "The Court of Appeal considers the appeal of all judgments issued by the Criminal Single Judge in the cases of misdemeanors, provided that they shall have been settled in the merits of the dispute. However, if they were not settled in the merits of the dispute, they shall be appealed with the nal judgment only.",
+  "except_title": "With the exception of",
+  "except_paragraph": "The appeal of decisions that settle one or more of the formal defenses stipulated in Article 73 of the Criminal Procedures Code shall be accepted. Decisions by which the Single Judge terminates the lawsuit without addressing its subject matter. Decisions issued on accepting or revoking the release requests.",
+  "appeal_intro1": "The Court of Appeal considers the appeal of the judgments issued by the Criminal Single Judge in the cases of violations,",
+  "appeal_intro2": "provided that they shall be on:",
+  "col1": "Imprisonment, preventive detention or a fine of more than five hundred thousand Lebanese pounds.",
+  "col2": "Additional or secondary penalty or personal compensations of more than ve hundred thousand Lebanese pounds.",
+  "col3": "Revocation of defense stipulated in Article 73 of the Criminal Procedures Code.",
+  "col4": "Penalty for a violation correlative with misdemeanor.",
+  "appeal_info1": "The Court of Appeal is entitled, when exercising its tasks, to listen to witnesses, interrogate the parties of the lawsuit,",
+  "appeal_info2": "invite new witnesses, appoint an expert, listen to experts and carry out any new investigations it deems appropriate...",
+
+  "decision": "Decision on revoking or accepting the defenses stated in Article 73 of the Criminal Procedures Code:",
+  "wrt1": "With respect to the Public Prosecution, the delay is 24 hours:",
+  "wrt1_info": "As of the date of issuance of the decision.",
+  "wrt2": "With respect to the opponents, the delay is 24 hours:",
+  "wrt2_info": "As of the date of notifying the opponents of the same.",
+  "appeal_decision_title": "Decisions of the court of appeal",
+  "d1": "Dissolution of the appealed judgment",
+  "d2": "Legalization of the appealed judgment.",
+  "delay_title1": "Delay of appeal:",
+  "delay_title2": "Final judgments:",
+  "r1": "With respect to the plaintiff, responsible for money, the delay is 15 days:",
+  "r1_detail": "As of the date of its issuance if it is made in presentia. As of the date of being notied whether it is made in presentia or absentia.",
+  "r2": "With respect to the Appellate Public Prosecutor, the delay is one month:",
+  "r2_detail": "As of the date of issuance of the judgment.",
+  "r3": "With respect to the Appellate Public Prosecution, the delay is two months:",
+  "r3_detail": "As of the date of issuance of the judgment."
 }

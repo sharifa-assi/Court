@@ -25,6 +25,8 @@ i18n
     detection: {
       order: ["path", "cookie", "htmlTag", "localStorage", "subdomain"],
       caches: ["cookie"],
+      lookupFromPathIndex: 0,
+      checkWhitelist: true,
     },
     backend: {
       loadPath: "/assets/locales/{{lng}}/translation.json",
