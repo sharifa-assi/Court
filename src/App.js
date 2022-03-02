@@ -1,16 +1,12 @@
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Dropdown } from "react-bootstrap";
-import i18next from "i18next";
 import cookies from "js-cookie";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyle from "./globalStyles";
 import Home from "./pages/HomePage/Home";
 
-
 import ScrollToTop from "./components/ScrollToTop";
 import { Navbar } from "./components";
-
 
 const languages = [
   {
@@ -26,6 +22,14 @@ const languages = [
     dir: "rtl",
   },
 ];
+const base = "/:locale(en|ar)?";
+const stripLocale = (pathname, locale) => {
+  if (!locale) {
+    return pathname;
+  }
+
+  return pathname.replace(`/${locale}`, "");
+};
 
 function App() {
   const currentLanguageCode = cookies.get("i18next") || "en";
@@ -33,8 +37,6 @@ function App() {
   const { t } = useTranslation();
 
   const releaseDate = new Date("2021-03-07");
-  const timeDifference = new Date() - releaseDate;
-  
 
   useEffect(() => {
     console.log("Setting page stuff");
@@ -43,20 +45,18 @@ function App() {
   }, [currentLanguage, t]);
 
   return (
-    <div >
-      <div >
-      
+    <div>
+      <div>
         <Router>
           <GlobalStyle />
           <ScrollToTop />
           <Navbar />
           <Switch>
-            <Route path="/" exact component={Home} />
-          
+            <Route exact path={base} component={Home} />
           </Switch>
         </Router>
       </div>
-     {/** <div className="d-flex flex-column align-items-start">
+      {/** <div className="d-flex flex-column align-items-start">
         <h1 className="font-weight-normal mb-3"> {t("app_title")}</h1>
         <p>{t("intro")}</p>
         <h1 className="font-weight-normal mb-3"> {t("except_title")}</h1>
@@ -84,7 +84,7 @@ function App() {
         <p>{t("r2_detail")}</p>
         <h2>{t("r3")}</h2>
         <p>{t("r3_detail")}</p>
-      </div>*/} 
+      </div>*/}
     </div>
   );
 }

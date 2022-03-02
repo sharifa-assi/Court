@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import { Button } from "../../globalStyles";
+import { Link, NavLink, Redirect } from "react-router-i18n";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import cookies from "js-cookie";
@@ -19,12 +19,6 @@ import {
   NavBtnLink,
 } from "./Navbar.elements";
 
-
-
-
-
-
-
 const languages = [
   {
     code: "en",
@@ -40,29 +34,27 @@ const languages = [
   },
 ];
 
+const base = "/:locale(en|ar)?";
+const stripLocale = (pathname, locale) => {
+  if (!locale) {
+    return pathname;
+  }
 
-
-
+  return pathname.replace(`/${locale}`, "");
+};
 
 function Navbar() {
-
-
   const currentLanguageCode = cookies.get("i18next") || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const { t } = useTranslation();
 
   const releaseDate = new Date("2021-03-07");
-  const timeDifference = new Date() - releaseDate;
-
 
   useEffect(() => {
     console.log("Setting page stuff");
     document.body.dir = currentLanguage.dir || "ltr";
     document.title = t("app_title");
   }, [currentLanguage, t]);
-
-
-
 
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -96,6 +88,7 @@ function Navbar() {
             <MobileIcon onClick={handleClick}>
               {click ? <FaTimes /> : <FaBars />}
             </MobileIcon>
+
             <NavMenu onClick={handleClick} click={click}>
               {languages.map(({ code, name, country_code }) => (
                 <NavItem>
